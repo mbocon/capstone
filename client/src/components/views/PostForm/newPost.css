@@ -1,0 +1,29 @@
+.create-h3 {
+    font-size: 1.25em;
+    text-align: center;
+}
+
+.create-post-btn {
+    font-size: .85em;
+    border: none!important;
+    outline: none!important;
+}
+
+.new-post {
+    margin: 1em;
+    width: 20%;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+.form-control {
+    font-size: .85em;
+}
+
+@media(max-width: 900px) {
+    .new-post{
+      width: 75%;
+      margin: 0 auto;
+      height: 35%;
+    }
+  }

@@ -1,0 +1,21 @@
+.welcome-h3 {
+    font-size: 1.5em;
+    margin-top: 1em;
+}
+
+.home-main {
+    width: 100%;
+    display: flex;
+}
+
+.welcome {
+    width: 100%;
+    text-align: center;
+    /* padding-left: 6em; */
+}
+
+@media(max-width: 900px) {
+    .home-main {
+      flex-direction: column;
+    }
+  }
