@@ -19,6 +19,7 @@ export function getPosts(){
     }
 }
 
+// CREATE A NEW POST
 export function createPost(dataToSubmit){
     const request = axios.post(`${POST_SERVER}/create`,dataToSubmit)
         .then(response => response.data);
@@ -29,8 +30,8 @@ export function createPost(dataToSubmit){
     }
 }
 
+// DELETE A POST
 export function deletePost(dataToSubmit){
-    console.log(dataToSubmit.postId,'is post id', dataToSubmit.userId, 'is the user id')
     const request = axios.delete(`${POST_SERVER}/${dataToSubmit.userId}/${dataToSubmit.postId}`, dataToSubmit)
                 .then(response => response.data);
 
@@ -40,8 +41,9 @@ export function deletePost(dataToSubmit){
     }
 }
 
+// UPDATE A POST
 export function updatePost(dataToSubmit){
-    const request = axios.put(`${POST_SERVER}/update`,dataToSubmit)
+    const request = axios.put(`${POST_SERVER}/${dataToSubmit.id}`,dataToSubmit)
                 .then(response => response.data);
 
     return {
@@ -50,16 +52,5 @@ export function updatePost(dataToSubmit){
     }
 }
 
-
-
-// export function auth(){
-//     const request = axios.get(`${USER_SERVER}/auth`)
-//     .then(response => response.data);
-
-//     return {
-//         type: AUTH_USER,
-//         payload: request
-//     }
-// }
 
 

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
@@ -30,6 +30,7 @@ function NewPost(props) {
 		dispatch(createPost(dataToSubmit)).then(response => {
 			if (response.payload) {
 				form.reset();
+				localStorage.setItem('newPost', true)
 				props.props.history.push('/home');
 			} else {
 				console.log(response.payload);
@@ -44,6 +45,7 @@ function NewPost(props) {
 
 	return (
 		<div className='new-post'>
+		<div className="new-post-area">
 			<h3 className='create-h3'>Create a post</h3>
 			<Form className='new-post-form' onSubmit={handleSubmit}>
 				<Form.Row>
@@ -66,6 +68,14 @@ function NewPost(props) {
 					Submit
 				</Button>
 			</Form>
+			</div>
+			<div className="instructions">
+				<h6>How to?</h6>
+				<p className='instructions-p'>Create a post describing what skill(s) you want to learn</p>
+				<p className='instructions-p'>Include the skill(s) you can teach your connection in return</p>
+				<p className='instructions-p'>Scroll through your feed and see if anyone is offering the skill(s) you desire</p>
+				<p className='instructions-p'>If you find a match, connect with them and coordinate a schedule</p>
+			</div>
 		</div>
 	);
 }
