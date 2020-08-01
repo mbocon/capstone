@@ -2,12 +2,11 @@ import React, { Fragment } from 'react';
 import NewPost from '../PostForm/NewPost';
 import AllPosts from '../AllPosts/AllPosts';
 import Footer from '../Footer/Footer';
-import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './homePage.css';
 
 function HomePage(props) {
-	console.log(localStorage);
+	console.log(localStorage, 'IS STORAGE ON HOMEPAGE');
 
 	return (
 		<Fragment>

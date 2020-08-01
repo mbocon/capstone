@@ -1,28 +1,47 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getPosts, deletePost } from '../../../_actions/post_actions';
 import { withRouter } from 'react-router-dom';
+import EditPage from '../EditPage/EditPage';
 import './allPosts.css';
-import './allPostsSASS.scss';
-import { useEffect } from 'react';
+import moment from 'moment';
 
 function AllPosts(props) {
 	const dispatch = useDispatch();
 
 	let [posts, setPosts] = useState([]);
+	let [editing, setEditing] = useState(false);
+	let [searchTerm, setSearchTerm] = useState('');
+	let [newPost, setNewPost] = useState(false);
 
-	useEffect(()=>{
-		dispatch(getPosts()).then(response => {
-			if (response.payload) {
-				setPosts(response.payload);
-			} else {
-				console.log('error getting posts');
-			}
-		});
-	})
+	useEffect(() => {
+		setNewPost(localStorage.newPost);
+		if (newPost === 'true') {
+			dispatch(getPosts()).then(response => {
+				if (response.payload) {
+					setPosts(response.payload);
+					localStorage.removeItem('newPost');
+				} else {
+					console.log('error getting posts');
+				}
+			});
+		}
+	});
 
-	
-	console.log(localStorage.userId, 'is the user id');
+	useEffect(() => {
+		if (searchTerm === '') {
+			dispatch(getPosts()).then(response => {
+				if (response.payload) {
+					setPosts(response.payload);
+				} else {
+					console.log('error getting posts');
+				}
+			});
+		} else if (searchTerm !== '') {
+			const results = posts.filter(post => post.offering.toLowerCase().includes(searchTerm));
+			setPosts(results);
+		}
+	}, [searchTerm, editing]);
 
 	const handleDelete = id => {
 		let dataToSubmit = {
@@ -44,78 +63,98 @@ function AllPosts(props) {
 		});
 	};
 
-	posts = posts.reverse();
+	const toggleEdit = postId => {
+		localStorage.setItem('thePostId', postId);
+		editing === false ? setEditing(true) : setEditing(false);
+	};
+
+	const handleSearch = e => {
+		setSearchTerm(e.target.value);
+	};
+
+	let date;
 
 	return (
-		<div className='all-posts'>
+		<div className='all-posts row'>
+			{editing === false ? (
+				<div className='search'>
+					<input type='text' onChange={handleSearch} placeholder='Search offered skills' className='search-bar' />
+				</div>
+			) : null}
+
 			{posts.length > 0 &&
-				posts.map(post => {
-					return (
-						<div className='outer-div' key={post.id}>
-						
-							<div className={localStorage.userId === post.user ? 'inner-div-alt' : 'inner-div'}>
-								<div className='front'>
-									<div className='front__bkg-photo'></div>
-									<div className='front__face-photo'>
-										<img
-											src='https://images.unsplash.com/photo-1517384084767-6bc118943770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'
-											alt=''
-										/>
-									</div>
-									<div className='front__text'>
-										<h3 className='front__text-header'>{post.author}</h3>
-										<p className='front__text-para'>Wants to learn: <span className="info">{post.seeking}</span></p>
-										<p className='front__text-para'>Willing to teach: <span className="info">{post.offering}</span></p>
-										{localStorage.userId === post.user ? (
-											<div className='post-btns'>
-												<button className='edit-btn btn btn-success'>Edit</button>
-												<button onClick={() => handleDelete(post._id)} className='delete-btn btn btn-danger'>
-													Delete
-												</button>
+				posts
+					.slice(0)
+					.reverse()
+					.map(post => {
+						date = new Date(post.date);
+						return (
+							<Fragment key={post._id}>
+								{editing === false ? (
+									<div className='profile col-xs-12 col-sm-8 col-md-6 col-lg-4'>
+										<div className='profile-blog blog-border'>
+											<img className='rounded-img' src='https://bootdey.com/img/Content/user_2.jpg' alt='' />
+											<div className='name-location'>
+												<strong>{post.author}</strong>
+												<span className='post-time'>Posted {moment(date).fromNow(true)} ago</span>
 											</div>
-										) : (
-											<i class="fa fa-share flip-icon"></i>
-										)}
+											<div className='clearfix margin-bottom-20'></div>
+											<p className='skills-p'>
+												<span className='info'>Asking:</span> {post.seeking}
+											</p>
+											<p className='skills-p'>
+												<span className='info'>Offering:</span> {post.offering}
+											</p>
+											<hr />
+											<div>
+												<ul className='ul'>
+													{localStorage.userId === post.user ? (
+														<div className='post-btns'>
+															<button onClick={() => toggleEdit(post._id)} className='edit-btn btn btn-success'>
+																Edit
+															</button>
+															<button onClick={() => handleDelete(post._id)} className='delete-btn btn btn-danger'>
+																Delete
+															</button>
+														</div>
+													) : (
+														<ul className='list-inline social-list'>
+															<li>
+																<a href='#' className='social-icon'>
+																	<i className='fa fa-envelope' aria-hidden='true'></i>
+																</a>
+															</li>
+															<li>
+																<a href='#' className='social-icon'>
+																	<i className='fa fa-github-square' aria-hidden='true'></i>
+																</a>
+															</li>
+															<li>
+																<a href='#' className='social-icon'>
+																	<i className='fa fa-linkedin-square' aria-hidden='true'></i>
+																</a>
+															</li>
+														</ul>
+													)}
+												</ul>
+											</div>
+										</div>
 									</div>
-								</div>
-								<div className='back'>
-									<div className='social-media-wrapper'>
-										<a href='#' className='social-icon'>
-											<i className='fa fa-envelope' aria-hidden='true'></i>
-										</a>
-										<a href='#' className='social-icon'>
-											<i className='fa fa-github-square' aria-hidden='true'></i>
-										</a>
-										<a href='#' className='social-icon'>
-											<i className='fa fa-linkedin-square' aria-hidden='true'></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					);
-				})}
+								) : (
+									<EditPage
+										props={props}
+										post={post}
+										postId={localStorage.thePostId}
+										toggleEdit={toggleEdit}
+										searchTerm={searchTerm}
+										setSearchTerm={setSearchTerm}
+									/>
+								)}
+							</Fragment>
+						);
+					})}
 		</div>
 	);
 }
 
 export default withRouter(AllPosts);
-
-// <div className='post-card container' key={post._id}>
-// 								<h6>
-// 									<span className='post-content'> Posted by:</span> {post.author}
-// 								</h6>
-// 								<p>
-// 									<span className='post-content'> Seeking: </span>
-// 									{post.seeking}
-// 								</p>
-// 								<p>
-// 									<span className='post-content'> Offering: </span>
-// 									{post.offering}
-// 								</p>
-// 								<p>
-// 									<span className='post-content'> Available: </span>
-// 									{post.available}
-// 								</p>
-//
-// 								</div>
