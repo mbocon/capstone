@@ -8,7 +8,6 @@ import './registerPage.css';
 import { withRouter } from 'react-router-dom';
 
 function RegisterPage(props) {
-	
 	const dispatch = useDispatch();
 
 	const [name, setName] = useState('');
@@ -19,9 +18,7 @@ function RegisterPage(props) {
 	const [password2, setPassword2] = useState('');
 
 	const [validated, setValidated] = useState(false);
-
 	const handleSubmit = e => {
-
 		e.preventDefault();
 
 		const form = e.currentTarget;
@@ -41,8 +38,10 @@ function RegisterPage(props) {
 		};
 
 		dispatch(registerUser(dataToSubmit)).then(response => {
+			console.log(response.payload, 'is register payload')
 			if (response.payload.success) {
-				props.history.push('/login');
+				localStorage.setItem('theUserId', response.payload.user._id)
+				props.history.push('/setAvatar');
 			} else {
 				console.log(response.payload.err.errmsg);
 			}
@@ -75,6 +74,7 @@ function RegisterPage(props) {
 						<Form.Control.Feedback type='invalid'>Email is required</Form.Control.Feedback>
 					</Form.Group>
 
+
 					<Form.Group controlId='github' onChange={handleChange}>
 						<Form.Label>Github</Form.Label>
 						<Form.Control type='text' placeholder='Enter Github Profile URL' />
@@ -85,7 +85,7 @@ function RegisterPage(props) {
 						<Form.Control type='text' placeholder='Enter LinkedIn Profile URL' />
 					</Form.Group>
 
-					<Form.Group controlId='password' onChange={e => handleChange(e)}>
+					<Form.Group controlId='password' onChange={handleChange}>
 						<Form.Label>Password</Form.Label>
 						<Form.Control type='password' placeholder='Password' required />
 						<Form.Control.Feedback type='invalid'>Password is required.</Form.Control.Feedback>
@@ -98,7 +98,7 @@ function RegisterPage(props) {
 					</Form.Group>
 				</Form.Row>
 
-				<Button variant='primary'  className='register-btn' type='submit required'>
+				<Button variant='primary' className='register-btn' type='submit required'>
 					Register
 				</Button>
 			</Form>

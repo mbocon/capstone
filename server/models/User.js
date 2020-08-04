@@ -24,6 +24,10 @@ const userSchema = mongoose.Schema({
     linkedin: {
         type: String
     },
+    avatar: {
+        type: String,
+        default: 'no avatar'
+    },
     role : {
         type:Number,
         default: 0 

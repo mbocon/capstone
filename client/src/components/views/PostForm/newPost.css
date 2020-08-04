@@ -32,9 +32,8 @@
 	font-size: 0.75em;
 }
 
-
 .welcome-h3 {
-	margin-top: -1.5em!important;
+	margin-top: -.75em!important;
 }
 
 @media (max-width: 900px) {
@@ -62,7 +61,7 @@
 		width: fit-content;
 		margin: 0 auto;
 		font-size: 1.25em !important;
-		padding-top: 2em;
+		margin-top: 1em!important;
 	}
 
 	.welcome {

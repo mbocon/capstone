@@ -40,7 +40,8 @@ function LoginPage(props) {
 				localStorage.setItem('email', response.payload.userId.email)
 				localStorage.setItem('github', response.payload.userId.github)
 				localStorage.setItem('linkedin', response.payload.userId.linkedin)
-				props.history.push('/home');
+				localStorage.setItem('avatar', response.payload.userId.avatar)
+				props.history.push('/home')
 			} else {
 				console.log(response.payload);
 			}

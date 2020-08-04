@@ -27,7 +27,8 @@ function NewPost(props) {
 			user: localStorage.userId,
 			email: localStorage.email,
 			github: localStorage.github,
-			linkedin: localStorage.linkedin
+			linkedin: localStorage.linkedin,
+			avatar: localStorage.avatar
 		};
 
 		dispatch(createPost(dataToSubmit)).then(response => {
