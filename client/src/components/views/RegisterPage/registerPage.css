@@ -1,22 +1,26 @@
 .register-page {
-    /* border: 2px solid red; */
     padding: 1em;
     text-align: center;
 }
 
 .register-form {
   text-align: center;
+  width: 50%;
 }
 
 .form-row {
 display: flex;
 flex-direction: column;
-/* width: 100%; */
-/* margin: 0 auto; */
 text-align: left;
 }
 
+.form-group {
+  margin: 0;
+}
 
+.register-btn {
+  margin-top: 1em;
+}
 
 .register-h2 {
     margin-bottom: 1em;

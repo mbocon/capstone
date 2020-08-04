@@ -14,6 +14,7 @@ function RegisterPage(props) {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [github, setGithub] = useState('');
+	const [linkedin, setLinkedIn] = useState('');
 	const [password, setPassword] = useState('');
 	const [password2, setPassword2] = useState('');
 
@@ -34,6 +35,7 @@ function RegisterPage(props) {
 		let dataToSubmit = {
 			name: name,
 			email: email,
+			linkedin: linkedin,
 			github: github,
 			password: password,
 		};
@@ -50,6 +52,7 @@ function RegisterPage(props) {
 	const handleChange = e => {
 		if (e.target.id === 'name') setName(e.target.value);
 		if (e.target.id === 'email') setEmail(e.target.value);
+		if (e.target.id === 'linkedin') setLinkedIn(e.target.value);
 		if (e.target.id === 'github') setGithub(e.target.value);
 		if (e.target.id === 'password') setPassword(e.target.value);
 		if (e.target.id === 'password2') setPassword2(e.target.value);
@@ -74,7 +77,12 @@ function RegisterPage(props) {
 
 					<Form.Group controlId='github' onChange={handleChange}>
 						<Form.Label>Github</Form.Label>
-						<Form.Control type='text' placeholder='Enter Github URL' />
+						<Form.Control type='text' placeholder='Enter Github Profile URL' />
+					</Form.Group>
+
+					<Form.Group controlId='linkedin' onChange={handleChange}>
+						<Form.Label>Linkedin</Form.Label>
+						<Form.Control type='text' placeholder='Enter LinkedIn Profile URL' />
 					</Form.Group>
 
 					<Form.Group controlId='password' onChange={e => handleChange(e)}>
@@ -90,7 +98,7 @@ function RegisterPage(props) {
 					</Form.Group>
 				</Form.Row>
 
-				<Button variant='primary' type='submit required'>
+				<Button variant='primary'  className='register-btn' type='submit required'>
 					Register
 				</Button>
 			</Form>

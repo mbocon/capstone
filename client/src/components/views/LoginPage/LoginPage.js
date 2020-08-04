@@ -33,10 +33,13 @@ function LoginPage(props) {
 		};
 
 		dispatch(loginUser(dataToSubmit)).then(response => {
+			console.log(response.payload)
 			if (response.payload.loginSuccess) {
-				// console.log(response.payload.userId._id)
 				localStorage.setItem('user', response.payload.userId.name)
 				localStorage.setItem('userId', response.payload.userId._id)
+				localStorage.setItem('email', response.payload.userId.email)
+				localStorage.setItem('github', response.payload.userId.github)
+				localStorage.setItem('linkedin', response.payload.userId.linkedin)
 				props.history.push('/home');
 			} else {
 				console.log(response.payload);
@@ -68,7 +71,7 @@ function LoginPage(props) {
 						</Form.Group>
 					</Form.Row>
 
-					<Button variant='primary' type='submit'>
+					<Button variant='primary' className='login-btn' type='submit'>
 						Login
 					</Button>
 				</Form>
