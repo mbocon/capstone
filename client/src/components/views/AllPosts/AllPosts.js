@@ -126,12 +126,12 @@ function AllPosts(props) {
 																</a>
 															</li>
 															<li>
-																<a href={`${post.github}`} className='social-icon' target="_blank">
+																<a href={`${post.github}`} className='social-icon' target="_blank" rel="noopener noreferrer">
 																	<i className='fa fa-github-square' aria-hidden='true'></i>
 																</a>
 															</li>
 															<li>
-																<a href={`${post.linkedin}`} className='social-icon' target="_blank">
+																<a href={`${post.linkedin}`} className='social-icon' target="_blank" rel="noopener noreferrer">
 																	<i className='fa fa-linkedin-square' aria-hidden='true'></i>
 																</a>
 															</li>
