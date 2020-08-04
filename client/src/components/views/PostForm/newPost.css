@@ -7,6 +7,8 @@
 	font-size: 0.85em;
 	border: none !important;
 	outline: none !important;
+	margin-top: 1em;
+	opacity: .9;
 }
 
 .new-post {
@@ -27,6 +29,11 @@
 
 .instructions-p {
 	font-size: 0.75em;
+}
+
+
+.welcome-h3 {
+	margin-top: -1.5em!important;
 }
 
 @media (max-width: 900px) {
@@ -54,6 +61,7 @@
 		width: fit-content;
 		margin: 0 auto;
 		font-size: 1.25em !important;
+		padding-top: 2em;
 	}
 
 	.welcome {

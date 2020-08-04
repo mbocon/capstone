@@ -77,4 +77,14 @@ router.get("/logout", auth, (req, res) => {
     });
 });
 
+
+router.delete("/deleteuser/:id", (req, res) => {
+    User.findByIdAndRemove({ _id: req.params.id }, (err, doc) => {
+        if (err) return res.json({ success: false, err });
+        return res.status(200).send({
+            success: true
+        });
+    });
+});
+
 module.exports = router;

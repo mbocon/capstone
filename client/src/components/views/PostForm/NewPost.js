@@ -24,7 +24,10 @@ function NewPost(props) {
 			seeking: seeking,
 			offering: offering,
             author: localStorage.user,
-            user: localStorage.userId
+			user: localStorage.userId,
+			email: localStorage.email,
+			github: localStorage.github,
+			linkedin: localStorage.linkedin
 		};
 
 		dispatch(createPost(dataToSubmit)).then(response => {

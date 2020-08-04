@@ -17,6 +17,15 @@ const PostSchema = new Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String
+    },
+    github: {
+        type: String
+    },
+    linkedin: {
+        type: String
+    },
     name: {
         type: String
     },

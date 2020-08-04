@@ -18,6 +18,12 @@ const userSchema = mongoose.Schema({
         type: String,
         minglength: 5
     },
+    github: {
+        type: String
+    },
+    linkedin: {
+        type: String
+    },
     role : {
         type:Number,
         default: 0 

@@ -1,5 +1,5 @@
 .all-posts {
-	background: rgba(0, 0, 0, 0.05);
+	background: rgb(41, 164, 209);
 	width: 100%;
 	margin-top: 1em;
 	margin-bottom: 10em;
@@ -23,15 +23,7 @@
 	padding-left: 1em;
 	border: 3px solid;
 	border-radius: 5em;
-	font-size: 1.25em;
 	outline: none !important;
-}
-
-.search-btn {
-	border-radius: 5em;
-	color: rgba(0, 0, 0, 0.5);
-	font-size: 1em;
-	padding: 0em 2em;
 }
 
 .post-time {
@@ -49,15 +41,34 @@
 	padding: 0.15em 1em;
 	margin-top: 0.65em;
 	font-size: 1em;
+	border: none!important;
+	outline: none!important;
+}
+
+.btn {
+	outline: none!important;
+}
+
+.edit-btn {
+	background-color: rgb(43, 162, 254)!important;
+}
+
+.delete-btn {
+	background-color: rgb(16, 124, 255)!important;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+	opacity: .85!important;
 }
 
 .info {
 	text-transform: uppercase;
-	color: rgb(0, 145, 255);
+	color: rgb(0, 0, 0);
 }
 
 .skills-p {
-	color: rgb(103, 103, 103);
+	color: rgb(80, 80, 80);
 	line-height: 1.5em;
 	letter-spacing: 1px;
 }
@@ -67,7 +78,7 @@
 }
 
 .row {
-	margin: 1em 0em;
+	margin: 0em 0em;
 }
 
 .profile .panel-profile {
@@ -150,7 +161,7 @@
 
 .list-inline li {
 	display: inline-block;
-	font-size: 28px;
+	font-size: 20px;
 }
 
 .social-list li i {
@@ -173,10 +184,23 @@
 	color: rgb(0, 115, 255);
 }
 
+.app {
+	font-size: .85em;
+}
+
 @media (max-width: 900px) {
 	.all-posts {
 		height: 50vh;
 		padding-bottom: 6em;
 		overflow: scroll;
+	}
+
+	.search {
+		height: 40px;
+		padding: .25em;
+	}
+
+	.app {
+		font-size: .9em;
 	}
 }

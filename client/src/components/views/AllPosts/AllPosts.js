@@ -87,6 +87,7 @@ function AllPosts(props) {
 					.slice(0)
 					.reverse()
 					.map(post => {
+						console.log(post)
 						date = new Date(post.date);
 						return (
 							<Fragment key={post._id}>
@@ -110,27 +111,27 @@ function AllPosts(props) {
 												<ul className='ul'>
 													{localStorage.userId === post.user ? (
 														<div className='post-btns'>
-															<button onClick={() => toggleEdit(post._id)} className='edit-btn btn btn-success'>
+															<button onClick={() => toggleEdit(post._id)} className='edit-btn btn '>
 																Edit
 															</button>
-															<button onClick={() => handleDelete(post._id)} className='delete-btn btn btn-danger'>
+															<button onClick={() => handleDelete(post._id)} className='delete-btn btn'>
 																Delete
 															</button>
 														</div>
 													) : (
 														<ul className='list-inline social-list'>
 															<li>
-																<a href='#' className='social-icon'>
+																<a href={`mailto:${post.email}`} className='social-icon'>
 																	<i className='fa fa-envelope' aria-hidden='true'></i>
 																</a>
 															</li>
 															<li>
-																<a href='#' className='social-icon'>
+																<a href={`${post.github}`} className='social-icon' target="_blank">
 																	<i className='fa fa-github-square' aria-hidden='true'></i>
 																</a>
 															</li>
 															<li>
-																<a href='#' className='social-icon'>
+																<a href={`${post.linkedin}`} className='social-icon' target="_blank">
 																	<i className='fa fa-linkedin-square' aria-hidden='true'></i>
 																</a>
 															</li>
