@@ -24,9 +24,11 @@ router.get("/auth", auth, (req, res) => {
         isAuth: true,
         email: req.user.email,
         name: req.user.name,
+        github: req.user.github,
+        linkedin: req.user.linkedin,
         lastname: req.user.lastname,
         role: req.user.role,
-        image: req.user.image,
+        avatar: req.user.avatar,
     });
 });
 
@@ -34,10 +36,10 @@ router.post("/register", (req, res) => {
 
     const user = new User(req.body);
 
-    user.save((err, doc) => {
+    user.save((err, user) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).json({
-            success: true
+            success: true, user: user
         });
     });
 });
@@ -73,6 +75,16 @@ router.get("/logout", auth, (req, res) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).send({
             success: true
+        });
+    });
+});
+
+router.put("/updateuser", (req, res) => {
+    console.log(req.body, 'is the update user req')
+    User.findByIdAndUpdate({ _id: req.body.id }, { avatar: req.body.avatar }, (err, user) => {
+        if (err) return res.json({ success: false, err });
+        return res.status(200).send({
+            success: true, user: user
         });
     });
 });

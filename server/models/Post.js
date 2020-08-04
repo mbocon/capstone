@@ -26,6 +26,9 @@ const PostSchema = new Schema({
     linkedin: {
         type: String
     },
+    avatar: {
+        type: String
+    },
     name: {
         type: String
     },

@@ -4,6 +4,7 @@ import {
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
+    UPDATE_USER
 } from './types';
 
 import { USER_SERVER } from '../components/Config.js';
@@ -24,6 +25,16 @@ export function loginUser(dataToSubmit){
                 
     return {
         type: LOGIN_USER,
+        payload: request
+    }
+}
+
+export function updateUser(dataToSubmit){
+    const request = axios.put(`${USER_SERVER}/updateuser`, dataToSubmit)
+                .then(response => response.data);
+                
+    return {
+        type: UPDATE_USER,
         payload: request
     }
 }
