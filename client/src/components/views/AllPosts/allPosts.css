@@ -31,8 +31,10 @@
 }
 
 .post-btns {
+	margin: 0 auto;
+	width: 75%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-evenly;
 }
 
 .delete-btn,
@@ -43,10 +45,12 @@
 	font-size: 1em;
 	border: none!important;
 	outline: none!important;
+	color: white!important;
 }
 
-.btn {
+.btn{
 	outline: none!important;
+	font-size: inherit;
 }
 
 .edit-btn {
