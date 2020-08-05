@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import './homePage.css';
 
 function HomePage(props) {
-	console.log(localStorage, 'IS STORAGE ON HOMEPAGE');
+	// console.log(localStorage, 'IS STORAGE ON HOMEPAGE');
 
 	return (
 		<Fragment>
