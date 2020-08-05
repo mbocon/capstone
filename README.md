@@ -19,9 +19,9 @@ MOCK-UPS<br>
 
 
 
-![Alt text](https://imgur.com/SsYa5Ba "Landing-page")
+![Image of Landing-Page](https://imgur.com/SsYa5Ba)
+![Image of Home-Page](https://imgur.com/LtEZcpm)
 
-![Alt Text](https://imgur.com/LtEZcpm "Home-page")
 <br>
 
 TIMELINE
