@@ -1,0 +1,30 @@
+
+.profile-btns {
+    margin-top: 2em;
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.welcome-h4{
+    margin: 1em 0em 2em 0em;
+}
+.profile-form {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-area {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width: 700px) {
+    .profile-btns{
+        flex-direction: column;
+        height: 40%;
+    }
+}

@@ -8,6 +8,7 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import HomePage from './views/HomePage/HomePage';
 import AvatarSelector from './views/Avatar/Avatar';
+import Profile from './views/Profile/Profile';
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/home" component={Auth(HomePage, true)} />
+          <Route exact path="/profile" component={Auth(Profile, true)} />
           <Route exact path="/setAvatar" component={Auth(AvatarSelector, null)} />
         </Switch>
       </div>

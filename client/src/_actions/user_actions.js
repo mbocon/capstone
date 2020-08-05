@@ -4,7 +4,8 @@ import {
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
-    UPDATE_USER
+    UPDATE_USER,
+    UPDATE_PROFILE
 } from './types';
 
 import { USER_SERVER } from '../components/Config.js';
@@ -38,6 +39,17 @@ export function updateUser(dataToSubmit){
         payload: request
     }
 }
+
+export function updateProfile(dataToSubmit){
+    console.log(dataToSubmit, 'is the data to submt for update profile')
+    const request = axios.put(`${USER_SERVER}/updateProfile/${dataToSubmit.id}`, dataToSubmit)
+                .then(response => response.data);
+                
+    return {
+        type: UPDATE_PROFILE,
+        payload: request
+    }
+  }
 
 export function auth(){
     const request = axios.get(`${USER_SERVER}/auth`)

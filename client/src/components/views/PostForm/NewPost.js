@@ -4,9 +4,13 @@ import Button from 'react-bootstrap/Button';
 import { useDispatch } from 'react-redux';
 import { createPost } from '../../../_actions/post_actions';
 import './newPost.css';
+import { useSelector } from 'react-redux';
+
 
 function NewPost(props) {
 	const dispatch = useDispatch();
+	const user = useSelector(state => state.user);
+	console.log(user, 'is user on new post')
 
 	const [seeking, setSeeking] = useState('');
 	const [offering, setOffering] = useState('');
@@ -23,12 +27,12 @@ function NewPost(props) {
 		let dataToSubmit = {
 			seeking: seeking,
 			offering: offering,
-            author: localStorage.user,
-			user: localStorage.userId,
-			email: localStorage.email,
-			github: localStorage.github,
-			linkedin: localStorage.linkedin,
-			avatar: localStorage.avatar
+            author: user.userData.name,
+			user: user.userData._id,
+			email: user.userData.email,
+			github: user.userData.github,
+			linkedin: user.userData.linkedin,
+			avatar: user.userData.avatar
 		};
 
 		dispatch(createPost(dataToSubmit)).then(response => {

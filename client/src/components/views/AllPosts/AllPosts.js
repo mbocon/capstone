@@ -8,7 +8,7 @@ import moment from 'moment';
 
 function AllPosts(props) {
 	const dispatch = useDispatch();
-console.log(localStorage)
+	console.log(localStorage)
 	let [posts, setPosts] = useState([]);
 	let [editing, setEditing] = useState(false);
 	let [searchTerm, setSearchTerm] = useState('');
@@ -21,6 +21,16 @@ console.log(localStorage)
 				if (response.payload) {
 					setPosts(response.payload);
 					localStorage.removeItem('newPost');
+				} else {
+					console.log('error getting posts');
+				}
+			});
+		} 
+		if (localStorage.deletedPost === 'true'){
+			dispatch(getPosts()).then(response => {
+				if (response.payload) {
+					setPosts(response.payload);
+					localStorage.removeItem('deletedPost');
 				} else {
 					console.log('error getting posts');
 				}
@@ -53,6 +63,7 @@ console.log(localStorage)
 				dispatch(getPosts()).then(response => {
 					if (response.payload) {
 						setPosts(response.payload);
+						localStorage.setItem('deletedPost', true)
 					} else {
 						console.log('error getting posts');
 					}
@@ -87,7 +98,7 @@ console.log(localStorage)
 					.slice(0)
 					.reverse()
 					.map(post => {
-						console.log(post)
+						// console.log(post)
 						date = new Date(post.date);
 						return (
 							<Fragment key={post._id}>

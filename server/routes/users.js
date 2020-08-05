@@ -89,6 +89,15 @@ router.put("/updateuser", (req, res) => {
     });
 });
 
+router.put("/updateProfile/:id", (req, res) => {
+    User.findByIdAndUpdate({ _id: req.body.id }, { name: req.body.name, email: req.body.email, github: req.body.github, linkedin: req.body.linkedin }, (err, user) => {
+        if (err) return res.json({ success: false, err });
+        return res.status(200).send({
+            success: true, user: user
+        });
+    });
+  });
+
 
 router.delete("/deleteuser/:id", (req, res) => {
     User.findByIdAndRemove({ _id: req.params.id }, (err, doc) => {
