@@ -19,8 +19,8 @@ MOCK-UPS<br>
 
 
 
-![Image of Landing-Page](https://imgur.com/SsYa5Ba)
-![Image of Home-Page](https://imgur.com/LtEZcpm)
+![Image of Landing-Page](https://i.imgur.com/LtEZcpm.png)
+![Image of Home-Page](https://i.imgur.com/SsYa5Ba.png)
 
 <br>
 
