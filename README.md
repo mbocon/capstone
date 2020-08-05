@@ -19,9 +19,9 @@ MOCK-UPS<br>
 
 
 
-![Alt text](./img/landingpage.png?raw=true "Landing-page")
+![Alt text](https://imgur.com/SsYa5Ba "Landing-page")
 
-![Alt Text](./img/homepage.png?raw=true "Home-page")
+![Alt Text](https://imgur.com/LtEZcpm "Home-page")
 <br>
 
 TIMELINE
@@ -31,13 +31,13 @@ TIMELINE
 |---|---| ---|
 |Day 1| Project Description | Complete
 |Day 1| Wireframes  | Complete
-|Day 2| Core Application Structure (Express Server, React) | Incomplete
-|Day 3| Implement user Auth | Incomplete
-|Day 4| Create user profiles  | Incomplete
-|Day 5| Create user post functionality | Incomplete
-|Day 6| Implement CRUD on user posts | Incomplete
-|Day 7| CSS | Incomplete
-|Day 8| Implement cross-platform responsiveness | Incomplete
+|Day 2| Core Application Structure (Express Server, React) | Complete
+|Day 3| Implement user Auth | Complete
+|Day 4| Create user profiles  | Complete
+|Day 5| Create user post functionality | Complete
+|Day 6| Implement CRUD on user posts | Complete
+|Day 7| CSS | Complete
+|Day 8| Implement cross-platform responsiveness | Complete
 |Day 9| Debug/Final touches | Incomplete
 |Day 10| Deploy | Incomplete
 |Day 11 (Aug.8th)| Present | Incomplete
